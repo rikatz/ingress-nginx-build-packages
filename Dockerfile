@@ -1,28 +1,23 @@
-FROM alpine:3.19
+FROM alpine:3.19 as builder
 
-RUN apk update && apk add alpine-sdk
+ARG package_path
+ARG package_install
 
+COPY hack /hack
+COPY keys /keys 
 
-RUN adduser -D build && addgroup build abuild 
-
-RUN sed -i '1s;^;/home/build/packages/community\n;' /etc/apk/repositories
-RUN sed -i '1s;^;/home/build/packages/testing\n;' /etc/apk/repositories
-
-
-RUN mkdir -p /var/cache/distfiles && chgrp abuild /var/cache/distfiles \
-   && chmod g+w /var/cache/distfiles
+RUN /hack/prepare-user.sh
 
 USER build
+WORKDIR /home/build
 
-RUN git config --global user.name "Ingress NGINX build system" \
-    && git config --global user.email "ingress@kubernetes.io"
+RUN /hack/prepare-build-env.sh
 
-RUN git clone https://gitlab.alpinelinux.org/alpine/aports
-
-RUN cd aports/community/grpc && abuild -r
+RUN cd aports/${package_path} && abuild -r
 
 USER root
 
-RUN apk update && apk add grpc-dev
+RUN apk update && apk add ${package_install}
 
-
+FROM scratch
+COPY --from=builder /home/build/packages /packages 
