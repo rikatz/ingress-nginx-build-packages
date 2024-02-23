@@ -1,0 +1,50 @@
+# Based on https://github.com/wolfi-dev/os/blob/main/luajit.yaml
+package:
+  name: luajit
+  version: 2.1-20231117
+  epoch: 0
+  description: OpenResty's branch of LuaJIT
+  copyright:
+    - license: MIT
+
+environment:
+  contents:
+    repositories:
+      - 'https://dl-cdn.alpinelinux.org/alpine/v3.19/main'
+      - 'https://dl-cdn.alpinelinux.org/alpine/v3.19/community'
+    packages:
+      - autoconf
+      - automake
+      - build-base
+      - busybox
+      - ca-certificates-bundle
+
+pipeline:
+  - uses: git-checkout
+    with:
+      repository: https://github.com/openresty/luajit2
+      tag: v${{package.version}}
+      expected-commit: 4182d6bf37e9f8d1cb5d6e83b1db66de84b95101
+
+  - runs: |
+      export LUAJIT_LIB=/usr/lib
+      export LUA_LIB_DIR="$LUAJIT_LIB/lua"
+      export LUAJIT_INC=/usr/include/luajit-2.1
+
+      make CCDEBUG=-g PREFIX=/usr -j $(nproc)
+      make DESTDIR="${{targets.destdir}}" install PREFIX=/usr
+
+      ln -s luajit ${{targets.destdir}}/usr/bin/lua
+      ln -s "$LUAJIT_INC" ${{targets.destdir}}/usr/include/lua
+
+subpackages:
+  - name: luajit-dev
+    pipeline:
+      - uses: split/dev
+    dependencies:
+      runtime:
+        - luajit
+    description: luajit dev
+
+update:
+  enabled: false # package uses special versioning
