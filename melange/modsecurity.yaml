@@ -3,16 +3,20 @@
 package:
   name: modsecurity
   version: 3.0.12
-  epoch: 0
+  epoch: 1
   description: "ModSecurity is an open source, cross platform web application firewall (WAF) engine"
   copyright:
     - license: Apache-2.0
 
 environment:
   contents:
+    # We need to add our own repo because this build consumes our luajit and not upstream
     repositories:
+      - 'https://raw.githubusercontent.com/rikatz/ingress-nginx-build-packages/publish/packages'
       - 'https://dl-cdn.alpinelinux.org/alpine/v3.19/main'
       - 'https://dl-cdn.alpinelinux.org/alpine/v3.19/community'
+    keyring:
+      - 'https://raw.githubusercontent.com/rikatz/ingress-nginx-build-packages/publish/melange.rsa.pub'
     packages:
       - alpine-sdk
       - autoconf
