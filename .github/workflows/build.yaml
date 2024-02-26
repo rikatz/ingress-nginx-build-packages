@@ -49,7 +49,7 @@ jobs:
             docker run --privileged --rm \
               -v "${PWD}":/work cgr.dev/chainguard/melange build \
                 --create-build-log --cache-dir=/work/.melangecache \
-                --signing-key /work/melange.rsa --arch amd64,s390x ${package}
+                --signing-key /work/melange.rsa --arch amd64 ${package}
           done
 
 
