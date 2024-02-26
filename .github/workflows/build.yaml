@@ -48,12 +48,13 @@ jobs:
         run: |
           # Setup the melange cache dir on the host so we can use that in subsequent builds
           mkdir .melangecache
+          mkdir pkg-tmp
           for package in ${{ steps.changes.outputs.melange_all_changed_files }}; do
             echo ${package}
             docker run --privileged --rm \
               -v "${PWD}":/work cgr.dev/chainguard/melange build \
                 --create-build-log --cache-dir=/work/.melangecache \
-                --signing-key /work/melange.rsa --arch ${{ matrix.arch }} ${package}
+                --signing-key /work/melange.rsa --arch ${{ matrix.arch }} --out-dir ./pkg-tmp ${package}
           done
 
 
@@ -61,7 +62,7 @@ jobs:
         uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
         with:
           path: |
-            ./packages/
+            ./pkg-tmp/
           name: packages-${{ matrix.arch }}
           retention-days: 1
           if-no-files-found: warn
@@ -78,8 +79,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: |
-            ./packages/
+            ./pkg-tmp/
           merge-multiple: true
       - name: Display structure of downloaded files
         run: ls -R
+      - name: Copy to packages
+        run: |
+          cp -a ./pkg-tmp/* ./packages
+          ls -lR ./packages
   
