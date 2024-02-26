@@ -1,0 +1,61 @@
+{
+  "Signature": null,
+  "Description": "",
+  "Packages": [
+    {
+      "Name": "luajit",
+      "Version": "2.1-20231117-r4",
+      "Arch": "x86_64",
+      "Description": "OpenResty's branch of LuaJIT",
+      "License": "MIT",
+      "Origin": "luajit",
+      "Maintainer": "",
+      "URL": "",
+      "Checksum": "iR5dj6iniO1d8tx49OBxDNsaIyQ=",
+      "Dependencies": [
+        "so:libc.musl-x86_64.so.1",
+        "so:libgcc_s.so.1"
+      ],
+      "Provides": [
+        "cmd:luajit-2.1.1700206165=2.1-20231117-r4",
+        "so:libluajit-5.1.so.2=2"
+      ],
+      "InstallIf": null,
+      "Size": 3215089,
+      "InstalledSize": 6645917,
+      "ProviderPriority": 0,
+      "BuildTime": "1970-01-01T00:00:00Z",
+      "BuildDate": 0,
+      "RepoCommit": "",
+      "Replaces": null,
+      "DataHash": "b4da98554f72c0de3e235967ea3c86eb620bad28dac2c4818a1d4c7e84cbe378"
+    },
+    {
+      "Name": "luajit-dev",
+      "Version": "2.1-20231117-r4",
+      "Arch": "x86_64",
+      "Description": "luajit dev",
+      "License": "MIT",
+      "Origin": "luajit",
+      "Maintainer": "",
+      "URL": "",
+      "Checksum": "AtasTopbcmfxjQNUmPIUz/+VdTc=",
+      "Dependencies": [
+        "luajit",
+        "so:libluajit-5.1.so.2"
+      ],
+      "Provides": [
+        "pc:luajit=2.1.1700206165"
+      ],
+      "InstallIf": null,
+      "Size": 2324921,
+      "InstalledSize": 4926966,
+      "ProviderPriority": 0,
+      "BuildTime": "1970-01-01T00:00:00Z",
+      "BuildDate": 0,
+      "RepoCommit": "",
+      "Replaces": null,
+      "DataHash": "b3ab818c530e70055356d537dbe9769fddcb999a487af4bec5c0182826038f33"
+    }
+  ]
+}
