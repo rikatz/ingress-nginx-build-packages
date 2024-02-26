@@ -44,7 +44,6 @@ jobs:
         run: |
           # Setup the melange cache dir on the host so we can use that in subsequent builds
           mkdir .melangecache
-          echo ${{ steps.changes.outputs.melange_all_changed_files }}
           for package in ${{ steps.changes.outputs.melange_all_changed_files }}; do
             echo ${package}
             docker run --privileged --rm \
