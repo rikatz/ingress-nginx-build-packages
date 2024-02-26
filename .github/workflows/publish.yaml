@@ -1,0 +1,68 @@
+name: CI build action
+
+on:
+    push:
+      branches:
+        - publish
+      paths: 
+        - 'melange/**'
+
+
+jobs:
+  changes:
+    permissions:
+      contents: read
+
+    name: Determine packages to build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Look for changed files
+        id: changes
+        uses: tj-actions/changed-files@716b1e13042866565e00e85fd4ec490e186c4a2f #tj-actions/changed-files@v41.0.1
+        with:
+          files_yaml: |
+            melange:
+              - ./melange/*.yaml # Only top level files without structure
+
+      - name: 'Trust the github workspace'
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: "Install melange onto PATH"
+        run: |
+            TMP=$(mktemp -d)
+            docker run --rm -i -v $TMP:/out --entrypoint /bin/sh cgr.dev/chainguard/melange:latest -c "cp /usr/bin/melange /out"
+            echo "$TMP" >> $GITHUB_PATH
+      
+      - name: 'Use the real key'
+        run: |
+          echo ${{ secrets.MELANGE_KEY }} | base64 --decode > melange.rsa
+          echo ${{ secrets.MELANGE_PUBKEY }} | base64 --decode > melange.rsa.pub
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: 'Build Packages'
+        run: |
+          # Setup the melange cache dir on the host so we can use that in subsequent builds
+          mkdir .melangecache
+          for package in ${{ steps.changes.outputs.melange_all_changed_files }}; do
+            echo ${package}
+            docker run --privileged --rm \
+              -v "${PWD}":/work cgr.dev/chainguard/melange build \
+                --create-build-log --cache-dir=/work/.melangecache \
+                --signing-key /work/melange.rsa --arch amd64,aarch64,armv7,s390x ${package}
+          done
+
+      - name: 'Push back to publish branch'
+        if: github.event_name == 'push'
+        run: |
+          git config --global user.name rikatz
+          git config --global user.email "rikatz@users.noreply.github.com"
+          git add packages melange.rsa.pub
+          git commit -m Version bump
+          git push
+
+  
