@@ -2,7 +2,7 @@
 package:
   name: luajit
   version: 2.1-20231117
-  epoch: 3
+  epoch: 4
   description: OpenResty's branch of LuaJIT
   copyright:
     - license: MIT

@@ -11,7 +11,7 @@ on:
 jobs:
   changes:
     permissions:
-      contents: read
+      contents: write
 
     name: Determine packages to build
     runs-on: ubuntu-latest
