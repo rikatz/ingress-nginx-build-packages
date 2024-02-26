@@ -1,0 +1,68 @@
+name: CI build action
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  changes:
+    permissions:
+      contents: read
+
+    name: Determine packages to test building
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Look for changed files
+        id: changes
+        uses: tj-actions/changed-files@716b1e13042866565e00e85fd4ec490e186c4a2f #tj-actions/changed-files@v41.0.1
+        with:
+          files_yaml: |
+            melange:
+              - ./melange/*.yaml # Only top level files without structure
+
+      - name: 'Trust the github workspace'
+        run: |
+          # This is to avoid fatal errors about "dubious ownership" because we are
+          # running inside of a container action with the workspace mounted in.
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: "Install melange onto PATH"
+        run: |
+            TMP=$(mktemp -d)
+            docker run --rm -i -v $TMP:/out --entrypoint /bin/sh cgr.dev/chainguard/melange:latest -c "cp /usr/bin/melange /out"
+            echo "$TMP" >> $GITHUB_PATH
+      
+      - name: 'Use the real key'
+        run: |
+          echo ${{ secrets.MELANGE_KEY }} | base64 --decode > melange.rsa
+          echo ${{ secrets.MELANGE_PUBKEY }} | base64 --decode > melange.rsa.pub
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: 'Build Packages'
+        run: |
+          # Setup the melange cache dir on the host so we can use that in subsequent builds
+          mkdir .melangecache
+          for package in ${{ steps.changes.outputs.melange_all_changed_files }}; do
+            echo ${package}
+            docker run --privileged --rm \
+              -v "${PWD}":/work cgr.dev/chainguard/melange build \
+                --create-build-log --cache-dir=/work/.melangecache \
+                --signing-key /work/melange.rsa --arch amd64,aarch64,armv7,s390x ${package}
+          done
+
+
+      - name: 'Upload built packages to GitHub artifacts'
+        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
+        with:
+          path: |
+            ./packages/
+            ./packages.log
+          name: packages
+          retention-days: 1
+          if-no-files-found: warn
+
+  
