@@ -47,14 +47,13 @@ jobs:
       - name: 'Build Packages'
         run: |
           # Setup the melange cache dir on the host so we can use that in subsequent builds
-          # Old archs: ,aarch64,armv7,s390x
           mkdir .melangecache
           for package in ${{ steps.changes.outputs.melange_all_changed_files }}; do
             echo ${package}
             docker run --privileged --rm \
               -v "${PWD}":/work cgr.dev/chainguard/melange build \
                 --create-build-log --cache-dir=/work/.melangecache \
-                --signing-key /work/melange.rsa --arch amd64 ${package}
+                --signing-key /work/melange.rsa --arch amd64,aarch64,armv7,s390x ${package}
           done
 
       - name: 'Push back to publish branch'
