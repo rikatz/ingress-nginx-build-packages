@@ -29,7 +29,7 @@
       "BuildDate": 0,
       "RepoCommit": "",
       "Replaces": null,
-      "DataHash": "3b2d3f6dddd9e536cbffc89a3888fd3d53ddc8ce54db6614be2005a12ac531da"
+      "DataHash": ""
     },
     {
       "Name": "luajit-dev",
@@ -56,7 +56,86 @@
       "BuildDate": 0,
       "RepoCommit": "",
       "Replaces": null,
-      "DataHash": "e9fe74e1e84e67c8a82384ecf93f070126de2570c9931d2f17e5a16738a234de"
+      "DataHash": ""
+    },
+    {
+      "Name": "modsecurity",
+      "Version": "3.0.12-r1",
+      "Arch": "armv7",
+      "Description": "ModSecurity is an open source, cross platform web application firewall (WAF) engine",
+      "License": "Apache-2.0",
+      "Origin": "modsecurity",
+      "Maintainer": "",
+      "URL": "",
+      "Checksum": "MRzysLiAek+eI6ZZc8sxYTpgWBc=",
+      "Dependencies": [
+        "so:libGeoIP.so.1",
+        "so:libc.musl-armhf.so.1",
+        "so:libc.musl-armv7.so.1",
+        "so:libcurl.so.4",
+        "so:libgcc_s.so.1",
+        "so:libmaxminddb.so.0",
+        "so:libpcre.so.1",
+        "so:libstdc++.so.6"
+      ],
+      "Provides": [
+        "cmd:modsec-rules-check=3.0.12-r1",
+        "pc:modsecurity=3.0.12",
+        "so:libmodsecurity.so.3=3"
+      ],
+      "InstallIf": null,
+      "Size": 766402,
+      "InstalledSize": 2189713,
+      "ProviderPriority": 0,
+      "BuildTime": "1970-01-01T00:00:00Z",
+      "BuildDate": 0,
+      "RepoCommit": "",
+      "Replaces": null,
+      "DataHash": "1583fa9d841ec7133d87c1fe3dd3e10477d9991a04b7d8c7d1442fe243eb1a70"
+    },
+    {
+      "Name": "modsecurity-static",
+      "Version": "3.0.12-r1",
+      "Arch": "armv7",
+      "Description": "modsecurity static libraries",
+      "License": "Apache-2.0",
+      "Origin": "modsecurity",
+      "Maintainer": "",
+      "URL": "",
+      "Checksum": "sUqZU1YO9Uvk+IH+DCSwX6iZI30=",
+      "Dependencies": null,
+      "Provides": null,
+      "InstallIf": null,
+      "Size": 42258779,
+      "InstalledSize": 172751019,
+      "ProviderPriority": 0,
+      "BuildTime": "1970-01-01T00:00:00Z",
+      "BuildDate": 0,
+      "RepoCommit": "",
+      "Replaces": null,
+      "DataHash": "0f91ce232e2aac8c0b88096f258cd2b7f1145482d5b3ec53e71efc8df2679af4"
+    },
+    {
+      "Name": "modsecurity-config",
+      "Version": "3.0.12-r1",
+      "Arch": "armv7",
+      "Description": "modsecurity configuration files",
+      "License": "Apache-2.0",
+      "Origin": "modsecurity",
+      "Maintainer": "",
+      "URL": "",
+      "Checksum": "/3UYyguIYmUuOa+bbz/1IKZGL7U=",
+      "Dependencies": null,
+      "Provides": null,
+      "InstallIf": null,
+      "Size": 12861,
+      "InstalledSize": 108503,
+      "ProviderPriority": 0,
+      "BuildTime": "1970-01-01T00:00:00Z",
+      "BuildDate": 0,
+      "RepoCommit": "",
+      "Replaces": null,
+      "DataHash": "280a31bdea2e972114ce76d1cd054e0f15dbe0c1d246fb3e594bd8fe96530d9a"
     }
   ]
 }
