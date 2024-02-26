@@ -1,4 +1,1 @@
-keys/*.rsa*
-**/*.rsa*
-**/packages
-melange/old/*
+**/*.rsa

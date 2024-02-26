@@ -10,11 +10,8 @@ package:
 environment:
   contents:
     repositories:
-      - 'https://raw.githubusercontent.com/rikatz/ingress-nginx-build-packages/publish/packages'
       - 'https://dl-cdn.alpinelinux.org/alpine/v3.19/main'
       - 'https://dl-cdn.alpinelinux.org/alpine/v3.19/community'
-    keyring:
-      - https://raw.githubusercontent.com/rikatz/ingress-nginx-build-packages/publish/melange.rsa.pub
     packages:
       - autoconf
       - automake
