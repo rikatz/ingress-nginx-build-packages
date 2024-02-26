@@ -10,9 +10,13 @@ package:
 
 environment:
   contents:
+    # We need to add our own repo because this build consumes our luajit and not upstream
     repositories:
+      - 'https://raw.githubusercontent.com/rikatz/ingress-nginx-build-packages/publish/packages'
       - 'https://dl-cdn.alpinelinux.org/alpine/v3.19/main'
       - 'https://dl-cdn.alpinelinux.org/alpine/v3.19/community'
+    keyring:
+      - 'https://raw.githubusercontent.com/rikatz/ingress-nginx-build-packages/publish/melange.rsa.pub'
     packages:
       - alpine-sdk
       - autoconf
