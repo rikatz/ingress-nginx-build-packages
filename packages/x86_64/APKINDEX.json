@@ -4,42 +4,42 @@
   "Packages": [
     {
       "Name": "luajit",
-      "Version": "2.1-20231117-r4",
+      "Version": "2.1-20231117-r9",
       "Arch": "x86_64",
       "Description": "OpenResty's branch of LuaJIT",
       "License": "MIT",
       "Origin": "luajit",
       "Maintainer": "",
       "URL": "",
-      "Checksum": "iR5dj6iniO1d8tx49OBxDNsaIyQ=",
+      "Checksum": "yW9ptYc+zpHYk0uZTzbsD4uOaFE=",
       "Dependencies": [
         "so:libc.musl-x86_64.so.1",
         "so:libgcc_s.so.1"
       ],
       "Provides": [
-        "cmd:luajit-2.1.1700206165=2.1-20231117-r4",
+        "cmd:luajit-2.1.1700206165=2.1-20231117-r9",
         "so:libluajit-5.1.so.2=2"
       ],
       "InstallIf": null,
-      "Size": 3215089,
+      "Size": 3215081,
       "InstalledSize": 6645917,
       "ProviderPriority": 0,
       "BuildTime": "1970-01-01T00:00:00Z",
       "BuildDate": 0,
       "RepoCommit": "",
       "Replaces": null,
-      "DataHash": ""
+      "DataHash": "c8f984e3425f720d9226b09660044f72c304179da82f26f1bf45bc124212c3db"
     },
     {
       "Name": "luajit-dev",
-      "Version": "2.1-20231117-r4",
+      "Version": "2.1-20231117-r9",
       "Arch": "x86_64",
       "Description": "luajit dev",
       "License": "MIT",
       "Origin": "luajit",
       "Maintainer": "",
       "URL": "",
-      "Checksum": "AtasTopbcmfxjQNUmPIUz/+VdTc=",
+      "Checksum": "qflE6LKq9NKcIl5Nq+w0mtsm65I=",
       "Dependencies": [
         "luajit",
         "so:libluajit-5.1.so.2"
@@ -48,147 +48,14 @@
         "pc:luajit=2.1.1700206165"
       ],
       "InstallIf": null,
-      "Size": 2324921,
+      "Size": 2324913,
       "InstalledSize": 4926966,
       "ProviderPriority": 0,
       "BuildTime": "1970-01-01T00:00:00Z",
       "BuildDate": 0,
       "RepoCommit": "",
       "Replaces": null,
-      "DataHash": ""
-    },
-    {
-      "Name": "luajit",
-      "Version": "2.1-20231117-r5",
-      "Arch": "x86_64",
-      "Description": "OpenResty's branch of LuaJIT",
-      "License": "MIT",
-      "Origin": "luajit",
-      "Maintainer": "",
-      "URL": "",
-      "Checksum": "lEXJ8Mm/SG6oF8HCqpiKvz6oIPA=",
-      "Dependencies": [
-        "so:libc.musl-x86_64.so.1",
-        "so:libgcc_s.so.1"
-      ],
-      "Provides": [
-        "cmd:luajit-2.1.1700206165=2.1-20231117-r5",
-        "so:libluajit-5.1.so.2=2"
-      ],
-      "InstallIf": null,
-      "Size": 3215086,
-      "InstalledSize": 6645917,
-      "ProviderPriority": 0,
-      "BuildTime": "1970-01-01T00:00:00Z",
-      "BuildDate": 0,
-      "RepoCommit": "",
-      "Replaces": null,
-      "DataHash": ""
-    },
-    {
-      "Name": "luajit-dev",
-      "Version": "2.1-20231117-r5",
-      "Arch": "x86_64",
-      "Description": "luajit dev",
-      "License": "MIT",
-      "Origin": "luajit",
-      "Maintainer": "",
-      "URL": "",
-      "Checksum": "ouZnOO8su0s3bBK2O1jArOfIs2E=",
-      "Dependencies": [
-        "luajit",
-        "so:libluajit-5.1.so.2"
-      ],
-      "Provides": [
-        "pc:luajit=2.1.1700206165"
-      ],
-      "InstallIf": null,
-      "Size": 2324925,
-      "InstalledSize": 4926966,
-      "ProviderPriority": 0,
-      "BuildTime": "1970-01-01T00:00:00Z",
-      "BuildDate": 0,
-      "RepoCommit": "",
-      "Replaces": null,
-      "DataHash": ""
-    },
-    {
-      "Name": "modsecurity",
-      "Version": "3.0.12-r1",
-      "Arch": "x86_64",
-      "Description": "ModSecurity is an open source, cross platform web application firewall (WAF) engine",
-      "License": "Apache-2.0",
-      "Origin": "modsecurity",
-      "Maintainer": "",
-      "URL": "",
-      "Checksum": "c+Qv1kuuV5VBsWVHkpD1RhIxjBM=",
-      "Dependencies": [
-        "so:libGeoIP.so.1",
-        "so:libc.musl-x86_64.so.1",
-        "so:libcurl.so.4",
-        "so:libgcc_s.so.1",
-        "so:libmaxminddb.so.0",
-        "so:libpcre.so.1",
-        "so:libstdc++.so.6"
-      ],
-      "Provides": [
-        "cmd:modsec-rules-check=3.0.12-r1",
-        "pc:modsecurity=3.0.12",
-        "so:libmodsecurity.so.3=3"
-      ],
-      "InstallIf": null,
-      "Size": 888468,
-      "InstalledSize": 3034506,
-      "ProviderPriority": 0,
-      "BuildTime": "1970-01-01T00:00:00Z",
-      "BuildDate": 0,
-      "RepoCommit": "",
-      "Replaces": null,
-      "DataHash": "6f39a064f69b6d96a5cc1dd0ec7fa37c341a0d21952668102dc150dc014c09fd"
-    },
-    {
-      "Name": "modsecurity-static",
-      "Version": "3.0.12-r1",
-      "Arch": "x86_64",
-      "Description": "modsecurity static libraries",
-      "License": "Apache-2.0",
-      "Origin": "modsecurity",
-      "Maintainer": "",
-      "URL": "",
-      "Checksum": "hyQUMM2vFZYYeLcm0EJI8TZC/4s=",
-      "Dependencies": null,
-      "Provides": null,
-      "InstallIf": null,
-      "Size": 44024499,
-      "InstalledSize": 103655932,
-      "ProviderPriority": 0,
-      "BuildTime": "1970-01-01T00:00:00Z",
-      "BuildDate": 0,
-      "RepoCommit": "",
-      "Replaces": null,
-      "DataHash": "fdf09e89ae6adb111157183d4636333d962b2eda588819c18df5a4d0b413c6a1"
-    },
-    {
-      "Name": "modsecurity-config",
-      "Version": "3.0.12-r1",
-      "Arch": "x86_64",
-      "Description": "modsecurity configuration files",
-      "License": "Apache-2.0",
-      "Origin": "modsecurity",
-      "Maintainer": "",
-      "URL": "",
-      "Checksum": "yZnlyV4Vrh/rcxvzNiNhXUnXRxk=",
-      "Dependencies": null,
-      "Provides": null,
-      "InstallIf": null,
-      "Size": 12860,
-      "InstalledSize": 108504,
-      "ProviderPriority": 0,
-      "BuildTime": "1970-01-01T00:00:00Z",
-      "BuildDate": 0,
-      "RepoCommit": "",
-      "Replaces": null,
-      "DataHash": "1252a1de8222210859aeafad1c3239c9d46ae0e5fc05507341a20e160440b109"
+      "DataHash": "619273f4a25cca4763e9a3574b57e4971a55661474a756112b5202dd0c392274"
     }
   ]
 }

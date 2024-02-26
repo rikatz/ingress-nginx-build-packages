@@ -4,43 +4,43 @@
   "Packages": [
     {
       "Name": "luajit",
-      "Version": "2.1-20231117-r5",
+      "Version": "2.1-20231117-r9",
       "Arch": "armv7",
       "Description": "OpenResty's branch of LuaJIT",
       "License": "MIT",
       "Origin": "luajit",
       "Maintainer": "",
       "URL": "",
-      "Checksum": "0ReZhfA9ZYJQT9+OyzL37cxeYa4=",
+      "Checksum": "bnDF8Zu8yBFbKvTxEQVk/iMLgyM=",
       "Dependencies": [
         "so:libc.musl-armhf.so.1",
         "so:libc.musl-armv7.so.1",
         "so:libgcc_s.so.1"
       ],
       "Provides": [
-        "cmd:luajit-2.1.1700206165=2.1-20231117-r5",
+        "cmd:luajit-2.1.1700206165=2.1-20231117-r9",
         "so:libluajit-5.1.so.2=2"
       ],
       "InstallIf": null,
-      "Size": 3134327,
+      "Size": 3134329,
       "InstalledSize": 6338436,
       "ProviderPriority": 0,
       "BuildTime": "1970-01-01T00:00:00Z",
       "BuildDate": 0,
       "RepoCommit": "",
       "Replaces": null,
-      "DataHash": ""
+      "DataHash": "16d2dc9b1dd0efbc7a3d541e6818c88941027c5a731b54e3605b15d693d6f17a"
     },
     {
       "Name": "luajit-dev",
-      "Version": "2.1-20231117-r5",
+      "Version": "2.1-20231117-r9",
       "Arch": "armv7",
       "Description": "luajit dev",
       "License": "MIT",
       "Origin": "luajit",
       "Maintainer": "",
       "URL": "",
-      "Checksum": "UgnH+h8tMfEbZP1B2a26Ro20eNA=",
+      "Checksum": "9C8H9DoAsXbwAlAjHi17N/iR4No=",
       "Dependencies": [
         "luajit",
         "so:libluajit-5.1.so.2"
@@ -49,93 +49,14 @@
         "pc:luajit=2.1.1700206165"
       ],
       "InstallIf": null,
-      "Size": 2195201,
+      "Size": 2195192,
       "InstalledSize": 4627061,
       "ProviderPriority": 0,
       "BuildTime": "1970-01-01T00:00:00Z",
       "BuildDate": 0,
       "RepoCommit": "",
       "Replaces": null,
-      "DataHash": ""
-    },
-    {
-      "Name": "modsecurity",
-      "Version": "3.0.12-r1",
-      "Arch": "armv7",
-      "Description": "ModSecurity is an open source, cross platform web application firewall (WAF) engine",
-      "License": "Apache-2.0",
-      "Origin": "modsecurity",
-      "Maintainer": "",
-      "URL": "",
-      "Checksum": "MRzysLiAek+eI6ZZc8sxYTpgWBc=",
-      "Dependencies": [
-        "so:libGeoIP.so.1",
-        "so:libc.musl-armhf.so.1",
-        "so:libc.musl-armv7.so.1",
-        "so:libcurl.so.4",
-        "so:libgcc_s.so.1",
-        "so:libmaxminddb.so.0",
-        "so:libpcre.so.1",
-        "so:libstdc++.so.6"
-      ],
-      "Provides": [
-        "cmd:modsec-rules-check=3.0.12-r1",
-        "pc:modsecurity=3.0.12",
-        "so:libmodsecurity.so.3=3"
-      ],
-      "InstallIf": null,
-      "Size": 766402,
-      "InstalledSize": 2189713,
-      "ProviderPriority": 0,
-      "BuildTime": "1970-01-01T00:00:00Z",
-      "BuildDate": 0,
-      "RepoCommit": "",
-      "Replaces": null,
-      "DataHash": "1583fa9d841ec7133d87c1fe3dd3e10477d9991a04b7d8c7d1442fe243eb1a70"
-    },
-    {
-      "Name": "modsecurity-static",
-      "Version": "3.0.12-r1",
-      "Arch": "armv7",
-      "Description": "modsecurity static libraries",
-      "License": "Apache-2.0",
-      "Origin": "modsecurity",
-      "Maintainer": "",
-      "URL": "",
-      "Checksum": "sUqZU1YO9Uvk+IH+DCSwX6iZI30=",
-      "Dependencies": null,
-      "Provides": null,
-      "InstallIf": null,
-      "Size": 42258779,
-      "InstalledSize": 172751019,
-      "ProviderPriority": 0,
-      "BuildTime": "1970-01-01T00:00:00Z",
-      "BuildDate": 0,
-      "RepoCommit": "",
-      "Replaces": null,
-      "DataHash": "0f91ce232e2aac8c0b88096f258cd2b7f1145482d5b3ec53e71efc8df2679af4"
-    },
-    {
-      "Name": "modsecurity-config",
-      "Version": "3.0.12-r1",
-      "Arch": "armv7",
-      "Description": "modsecurity configuration files",
-      "License": "Apache-2.0",
-      "Origin": "modsecurity",
-      "Maintainer": "",
-      "URL": "",
-      "Checksum": "/3UYyguIYmUuOa+bbz/1IKZGL7U=",
-      "Dependencies": null,
-      "Provides": null,
-      "InstallIf": null,
-      "Size": 12861,
-      "InstalledSize": 108503,
-      "ProviderPriority": 0,
-      "BuildTime": "1970-01-01T00:00:00Z",
-      "BuildDate": 0,
-      "RepoCommit": "",
-      "Replaces": null,
-      "DataHash": "280a31bdea2e972114ce76d1cd054e0f15dbe0c1d246fb3e594bd8fe96530d9a"
+      "DataHash": "5ecd149ca3c925f2de00586f00dbf523c8960a7551e4e764a6f17de67b581f28"
     }
   ]
 }

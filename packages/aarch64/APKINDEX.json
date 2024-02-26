@@ -4,42 +4,42 @@
   "Packages": [
     {
       "Name": "luajit",
-      "Version": "2.1-20231117-r5",
+      "Version": "2.1-20231117-r9",
       "Arch": "aarch64",
       "Description": "OpenResty's branch of LuaJIT",
       "License": "MIT",
       "Origin": "luajit",
       "Maintainer": "",
       "URL": "",
-      "Checksum": "hrIhZx30gO/Uti4ieVg9X7ZAUlo=",
+      "Checksum": "fUKGIJDLMXWDeCCrPuxRxUHOeB8=",
       "Dependencies": [
         "so:libc.musl-aarch64.so.1",
         "so:libgcc_s.so.1"
       ],
       "Provides": [
-        "cmd:luajit-2.1.1700206165=2.1-20231117-r5",
+        "cmd:luajit-2.1.1700206165=2.1-20231117-r9",
         "so:libluajit-5.1.so.2=2"
       ],
       "InstallIf": null,
-      "Size": 3187870,
+      "Size": 3187872,
       "InstalledSize": 6772470,
       "ProviderPriority": 0,
       "BuildTime": "1970-01-01T00:00:00Z",
       "BuildDate": 0,
       "RepoCommit": "",
       "Replaces": null,
-      "DataHash": ""
+      "DataHash": "31df69fc86434bc997c8d436d8b22b9a1a6f05ff8fe3db5a971769ce2bc6db32"
     },
     {
       "Name": "luajit-dev",
-      "Version": "2.1-20231117-r5",
+      "Version": "2.1-20231117-r9",
       "Arch": "aarch64",
       "Description": "luajit dev",
       "License": "MIT",
       "Origin": "luajit",
       "Maintainer": "",
       "URL": "",
-      "Checksum": "pu2A9hfmP0fXoxzYYAKItX/nsrQ=",
+      "Checksum": "FCOnzVyNlEEDO5doan29+r99fzA=",
       "Dependencies": [
         "luajit",
         "so:libluajit-5.1.so.2"
@@ -48,92 +48,14 @@
         "pc:luajit=2.1.1700206165"
       ],
       "InstallIf": null,
-      "Size": 2335522,
+      "Size": 2335526,
       "InstalledSize": 6651165,
       "ProviderPriority": 0,
       "BuildTime": "1970-01-01T00:00:00Z",
       "BuildDate": 0,
       "RepoCommit": "",
       "Replaces": null,
-      "DataHash": ""
-    },
-    {
-      "Name": "modsecurity",
-      "Version": "3.0.12-r1",
-      "Arch": "aarch64",
-      "Description": "ModSecurity is an open source, cross platform web application firewall (WAF) engine",
-      "License": "Apache-2.0",
-      "Origin": "modsecurity",
-      "Maintainer": "",
-      "URL": "",
-      "Checksum": "gn9E7YzIO5wPZFRkhW2Fwy0GRZg=",
-      "Dependencies": [
-        "so:libGeoIP.so.1",
-        "so:libc.musl-aarch64.so.1",
-        "so:libcurl.so.4",
-        "so:libgcc_s.so.1",
-        "so:libmaxminddb.so.0",
-        "so:libpcre.so.1",
-        "so:libstdc++.so.6"
-      ],
-      "Provides": [
-        "cmd:modsec-rules-check=3.0.12-r1",
-        "pc:modsecurity=3.0.12",
-        "so:libmodsecurity.so.3=3"
-      ],
-      "InstallIf": null,
-      "Size": 829111,
-      "InstalledSize": 2978915,
-      "ProviderPriority": 0,
-      "BuildTime": "1970-01-01T00:00:00Z",
-      "BuildDate": 0,
-      "RepoCommit": "",
-      "Replaces": null,
-      "DataHash": "896fbfcafcf689da7e9db3c232417a2a5378ddc44af21092c8447748a06d81d1"
-    },
-    {
-      "Name": "modsecurity-static",
-      "Version": "3.0.12-r1",
-      "Arch": "aarch64",
-      "Description": "modsecurity static libraries",
-      "License": "Apache-2.0",
-      "Origin": "modsecurity",
-      "Maintainer": "",
-      "URL": "",
-      "Checksum": "R9FUCCn6LxYDN4nG93/GDRQygbI=",
-      "Dependencies": null,
-      "Provides": null,
-      "InstallIf": null,
-      "Size": 45923898,
-      "InstalledSize": 221945225,
-      "ProviderPriority": 0,
-      "BuildTime": "1970-01-01T00:00:00Z",
-      "BuildDate": 0,
-      "RepoCommit": "",
-      "Replaces": null,
-      "DataHash": "7c8e20c1dd0d870769b9242a85656a2cafbce87d1325e717555ae5a79a133b88"
-    },
-    {
-      "Name": "modsecurity-config",
-      "Version": "3.0.12-r1",
-      "Arch": "aarch64",
-      "Description": "modsecurity configuration files",
-      "License": "Apache-2.0",
-      "Origin": "modsecurity",
-      "Maintainer": "",
-      "URL": "",
-      "Checksum": "yk5X0gOSr3/9g2Drcm9whERD+to=",
-      "Dependencies": null,
-      "Provides": null,
-      "InstallIf": null,
-      "Size": 12857,
-      "InstalledSize": 108505,
-      "ProviderPriority": 0,
-      "BuildTime": "1970-01-01T00:00:00Z",
-      "BuildDate": 0,
-      "RepoCommit": "",
-      "Replaces": null,
-      "DataHash": "9f8a1f3ec1deed9a4ec1dce4120e99270d36135edb2683e8219eeb5a10f6281e"
+      "DataHash": "393cf137d2c4bf7080d1f9d3651990e87366417c03ddd67fef87461b94131cf7"
     }
   ]
 }
