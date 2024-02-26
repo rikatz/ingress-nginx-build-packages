@@ -2,7 +2,7 @@ name: CI build action
 
 on:
   pull_request:
-    branches: ['main']
+    branches: ['publish']
 
 jobs:
   changes:

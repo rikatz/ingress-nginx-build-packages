@@ -1,15 +1,21 @@
 name: CI build action
 
 on:
-  push:
-    branches: ['main']
+    push:
+      branches:
+        - publish
+      paths: 
+        - 'melange/**'
+    pull_request:
+      branches:
+        - publish
 
 jobs:
   changes:
     permissions:
       contents: read
 
-    name: Determine packages to test building
+    name: Determine packages to build
     runs-on: ubuntu-latest
 
     steps:
@@ -25,8 +31,6 @@ jobs:
 
       - name: 'Trust the github workspace'
         run: |
-          # This is to avoid fatal errors about "dubious ownership" because we are
-          # running inside of a container action with the workspace mounted in.
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: "Install melange onto PATH"
         run: |
@@ -54,15 +58,13 @@ jobs:
                 --signing-key /work/melange.rsa --arch amd64,aarch64,armv7,s390x ${package}
           done
 
-
-      - name: 'Upload built packages to GitHub artifacts'
-        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
-        with:
-          path: |
-            ./packages/
-            ./packages.log
-          name: packages
-          retention-days: 1
-          if-no-files-found: warn
+      - name: 'Push back to publish branch'
+        if: github.event_name == 'push'
+        run: |
+          git config --global user.name rikatz
+          git config --global user.email "rikatz@users.noreply.github.com"
+          git add packages
+          git commit -m Version bump
+          git push
 
   
