@@ -5,12 +5,16 @@ on:
     branches: ['publish']
 
 jobs:
-  changes:
+  build:
     permissions:
       contents: read
 
-    name: Determine packages to test building
+    name: Build packages
     runs-on: ubuntu-latest
+    
+    strategy:
+        matrix:
+          arch: [amd64 , aarch64, armv7, s390x]
 
     steps:
       - uses: actions/checkout@v4
@@ -49,7 +53,7 @@ jobs:
             docker run --privileged --rm \
               -v "${PWD}":/work cgr.dev/chainguard/melange build \
                 --create-build-log --cache-dir=/work/.melangecache \
-                --signing-key /work/melange.rsa --arch amd64 ${package}
+                --signing-key /work/melange.rsa --arch ${{ matrix.arch }} ${package}
           done
 
 
@@ -57,10 +61,25 @@ jobs:
         uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
         with:
           path: |
-            ./packages/
-            ./packages.log
-          name: packages
+            ./packages/${{ matrix.arch }}
+          name: packages-${{ matrix.arch }}
           retention-days: 1
           if-no-files-found: warn
-
+  
+  publish:
+    permissions:
+        contents: read
+  
+    name: Publish packages
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: 'download built packages to GitHub artifacts'
+        uses: actions/download-artifact@v4
+        with:
+          path: |
+            ./packages/
+          merge-multiple: true
+      - name: Display structure of downloaded files
+        run: ls -R
   
