@@ -4,7 +4,7 @@
 package:
   name: ingress-nginx-opentelemetry
   version: 1.11.0
-  epoch: 0
+  epoch: 1
   description: Ingress NGINX - Opentelemetry dependencies
   copyright:
     - license: Apache-2.0
