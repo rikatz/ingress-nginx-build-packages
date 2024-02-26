@@ -57,7 +57,7 @@ jobs:
             docker run --privileged --rm \
               -v "${PWD}":/work cgr.dev/chainguard/melange build \
                 --create-build-log --cache-dir=/work/.melangecache \
-                --signing-key /work/melange.rsa ${{ matrix.arch }} --out-dir ./pkg-tmp ${package}
+                --signing-key /work/melange.rsa --arch ${{ matrix.arch }} --out-dir ./pkg-tmp ${package}
           done
       
       - name: 'Upload built packages to GitHub artifacts'
