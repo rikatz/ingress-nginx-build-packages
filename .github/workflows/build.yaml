@@ -85,6 +85,7 @@ jobs:
         run: ls -R
       - name: Copy to packages
         run: |
+          mkdir packages
           cp -a ./pkg-tmp/* ./packages
           ls -lR ./packages
   
